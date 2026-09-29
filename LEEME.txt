@@ -1,0 +1,43 @@
+ACTUALIZADOR NIIMBOT D110_M PARA WINDOWS
+
+1. Windows 10/11 con Bluetooth Low Energy y Python 3.10 o posterior.
+   Python oficial: https://www.python.org/downloads/windows/
+   Instala Tcl/Tk (incluido normalmente). No requiere permisos de administrador.
+2. Extrae TODO el ZIP a una carpeta; no lo ejecutes dentro del ZIP.
+3. Abre Abrir.cmd. La primera vez instala Bleak dentro de .venv (requiere internet).
+4. Enciende la D110_M y cierra NIIMBOT en el teléfono para liberar Bluetooth.
+5. Buscar impresora > seleccionarla > Elegir firmware .bin.
+6. Indica la última versión que instalaste si la conoces, por ejemplo 4.33.
+7. Puedes usar Comprobar conexión antes de pulsar Instalar firmware.
+8. Espera la confirmación final. Si la impresora se apaga, enciéndela manualmente.
+
+No incluye un firmware: elige el .bin completo que quieras instalar. Solo admite
+modelo 2320, protocolo v3, cabecera NIIMBOT de 28 bytes y CRC válidos. Verifica
+modelo y batería >=3/4 antes de enviar la actualización. El botón de comprobar
+no imprime, no flashea y desconecta Bluetooth al terminar.
+
+La reimplementación C del proyecto todavía no es flasheable según su README.
+No uses el ELF de simulación ni un payload sin cabecera. Un CRC correcto verifica
+integridad del archivo, no que su código funcione o arranque en el hardware.
+
+La D110_M puede rechazar versiones iguales o inferiores. Los parches existentes
+siguen anunciando 4.30 por Bluetooth aunque su cabecera sea 4.31, 4.32 o 4.33.
+Este programa no cambia versiones ni CRC automáticamente. Recuerda las versiones
+que este mismo programa instaló correctamente en este PC, pero no puede detectar
+una cabecera instalada previamente por otra computadora. No uses una versión
+menor que la realmente instalada aunque la información Bluetooth diga 4.30.
+
+La transferencia no tiene reintentos automáticos de actualización completa.
+Se respetan las solicitudes de repetición de bloques de la impresora. Ante un
+fallo durante la fase final, conserva el registro y no asumas éxito ni reenvíes
+el mismo archivo a ciegas. No apagues ni cierres el programa durante la carga.
+
+Registros e historial: %LOCALAPPDATA%\NiimbotFirmwareWindows
+
+Incluye código fuente Python; no es un EXE independiente. El protocolo se basa
+en el actualizador que ya funcionó en la D110_M por BLE desde macOS. Las pruebas
+locales cubren formato, CRC, fragmentación y secuencia de actualización simulada.
+La interfaz/WinRT no se han ejecutado aún en un Windows real.
+
+Pruebas sin impresora: python -m unittest discover -s tests -v
+Documentación Bleak: https://bleak.readthedocs.io/en/latest/backends/windows.html
