@@ -11,7 +11,8 @@ ACTUALIZADOR NIIMBOT D110_M PARA WINDOWS
 7. Puedes usar Comprobar conexión antes de pulsar Instalar firmware.
 8. Espera la confirmación final. Si la impresora se apaga, enciéndela manualmente.
 
-No incluye un firmware: elige el .bin completo que quieras instalar. Solo admite
+El código actual incluye el parche 4.33 en firmware; lee firmware/README.md.
+El ZIP inicial de la release v1.0.0 contiene solo el programa. Solo admite
 modelo 2320, protocolo v3, cabecera NIIMBOT de 28 bytes y CRC válidos. Verifica
 modelo y batería >=3/4 antes de enviar la actualización. El botón de comprobar
 no imprime, no flashea y desconecta Bluetooth al terminar.

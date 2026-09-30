@@ -5,3 +5,4 @@ __pycache__/
 dist/
 build/
 *.bin
+!firmware/D110_M_4.33_app-roll_EXPERIMENTAL.bin

@@ -23,10 +23,16 @@ Es una aplicación Python con lanzador, no un EXE independiente.
 **Comprobar conexión** no flashea ni imprime. Bluetooth se desconecta al terminar.
 Los registros quedan en `%LOCALAPPDATA%\NiimbotFirmwareWindows`.
 
+## Firmware incluido
+
+El binario parcheado está en [`firmware/D110_M_4.33_app-roll_EXPERIMENTAL.bin`](firmware/D110_M_4.33_app-roll_EXPERIMENTAL.bin).
+Lee sus [notas y limitaciones](firmware/README.md) antes de seleccionarlo.
+La carpeta está incluida al descargar el código actual; el ZIP inicial de la release v1.0.0 contiene solo el programa.
+
 ## Compatibilidad y límites
 
 - Solo modelo **2320 / D110_M**, protocolo v3, payload de hasta 128 KiB.
-- No incluye firmware ni convierte ELF/payloads en imágenes flasheables.
+- Incluye el [firmware parcheado 4.33](firmware/README.md). No convierte ELF/payloads en imágenes flasheables.
 - La versión debe superar la instalada. Un parche puede anunciar 4.30 por BLE
   aunque su cabecera instalada sea 4.33; el programa no puede detectar esa
   cabecera con la consulta normal. No modifica versiones ni CRC automáticamente.
