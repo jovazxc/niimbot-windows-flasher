@@ -51,3 +51,15 @@ python -m unittest discover -s tests -v
 ```
 
 Consulta [LEEME.txt](LEEME.txt) para instrucciones completas.
+
+## Imprimir una etiqueta de prueba
+
+Abre **Imprimir-prueba.cmd**, elige la impresora detectada y espera una etiqueta
+**40 × 12 mm** con el texto «Prueba OK». Intensidad 3 por defecto. Cierra antes
+la app NIIMBOT del teléfono. El lanzador instala Pillow la primera vez.
+No flashea; desconecta Bluetooth al terminar.
+
+Para cambiar intensidad: `Imprimir-prueba.cmd --density 5`.
+También puedes usar `python print_test.py --address AA:BB:CC:DD:EE:FF --density 3`.
+La vista previa y el registro se guardan en
+`%LOCALAPPDATA%\NiimbotFirmwareWindows\experimental`.
